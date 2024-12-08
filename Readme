@@ -1,0 +1,22 @@
+# Flask Chatbot with Gemini API
+
+This is a simple Flask web app that uses the Gemini API to power a chatbot. You can interact with the bot via a web interface and optionally hear responses as speech.
+
+## Setup
+
+### 1. Clone the repository
+
+### 2. Set up a virtual environment
+
+python -m venv venv
+venv\Scripts\activate
+
+### 3 install dependencies 
+pip install -r requirements.txt
+
+### 4. Set your Gemini API key
+
+$env:GEMINI_API_KEY="your-api-key-here"
+
+### 5. Run the app
+python app.py
