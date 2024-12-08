@@ -3,13 +3,11 @@ from flask_cors import CORS
 from nltk.chat.util import Chat, reflections
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for all routes
+CORS(app)  
 
-# Download necessary NLTK data
 import nltk
 nltk.download('punkt')
 
-# Define English Q&A pairs
 pairs = [
     (r"what is software\??", ["Software is a set of instructions that a computer uses to perform tasks like writing or gaming."]),
     (r"what is a software engineer\??", ["A software engineer designs, develops, and maintains programs and applications."]),
@@ -33,18 +31,33 @@ pairs = [
     (r"can you share a software engineering success story\??", [
         "Sure! The development of Linux by Linus Torvalds is a great example. Starting as a personal project, Linux became the backbone of servers, mobile devices (Android), and many modern technologies."
     ]),
+    (r"what is civil engineering\??", [
+        "Civil engineering is a field of engineering that deals with the design, construction, and maintenance of infrastructure such as bridges, roads, buildings, and dams."
+    ]),
+    (r"what does a civil engineer do\??", [
+        "A civil engineer is responsible for planning, designing, and overseeing the construction of infrastructure projects. They ensure that these projects are safe, efficient, and meet regulatory standards."
+    ]),
+    (r"what are some important civil engineering projects\??", [
+        "Some notable civil engineering projects include the Suez Canal, the Three Gorges Dam in China, and the construction of highways and bridges worldwide."
+    ]),
+    (r"what is artificial intelligence\??", [
+        "Artificial intelligence (AI) refers to the simulation of human intelligence processes by machines, particularly computer systems, which include learning, reasoning, and self-correction."
+    ]),
+    (r"what is machine learning\??", [
+        "Machine learning is a subset of AI that enables systems to learn from data, identify patterns, and make decisions with minimal human intervention."
+    ]),
+    (r"what is deep learning\??", [
+        "Deep learning is a subset of machine learning that uses neural networks with many layers to analyze complex data, such as images, sounds, and text, for tasks like speech recognition and image classification."
+    ]),
     (r"(.*)", ["I'm not sure I understand. Can you rephrase your question?"])
 ]
 
-# Create chatbot
 chatbot = Chat(pairs, reflections)
 
-# Route to serve the homepage
 @app.route("/")
 def index():
     return render_template("index.html")
 
-# Route for chatbot communication
 @app.route("/chat", methods=["POST"])
 def chat():
     try:

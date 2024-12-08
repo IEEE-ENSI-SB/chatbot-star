@@ -14,7 +14,7 @@
 
         #chatContainer {
             max-width: 600px;
-            margin: 50px auto;
+            margin: 200px auto;
             background: white;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -98,7 +98,7 @@
         newMessage.className = sender === "You" ? "message user" : "message bot";
         newMessage.textContent = message;
         chatbox.appendChild(newMessage);
-        chatbox.scrollTop = chatbox.scrollHeight; // Scroll to bottom
+        chatbox.scrollTop = chatbox.scrollHeight; 
     }
 
     function sendMessage() {
@@ -107,7 +107,7 @@
         if (!message) return;
 
         appendMessage(message, "You");
-        inputBox.value = ""; // Clear input
+        inputBox.value = ""; 
 
         // Send the message to the Flask server
         fetch("http://127.0.0.1:5000/chat", {
